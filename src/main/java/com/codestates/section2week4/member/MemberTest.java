@@ -1,11 +1,14 @@
 package com.codestates.section2week4.member;
 
 import com.codestates.section2week4.DependencyConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberTest {
     public static void main(String[] args) {
-        DependencyConfig dependencyConfig = new DependencyConfig();
-        MemberService memberService = dependencyConfig.memberService();
+        // ApplicationContext 가 바로 Spring Container 이다.
+        ApplicationContext ac = new AnnotationConfigApplicationContext(DependencyConfig.class);
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
 
         Member member = new Member(0L, "lucky@codestates.com", "KimLucky", "010-1234-5678");
         // 내가 작성한 멤버 정보를 memberRepository 에 저장
@@ -29,3 +32,14 @@ public class MemberTest {
         }
     }
 }
+
+/*
+ApplicationContext 가 스프링 컨테이너입니다.
+
+기존에 DependencyConfig 를 사용해서 직접 객체를 생성하고 의존 주입을 했지만, 스프링 컨테이너를 이용한 의존 주입을 사용합니다.
+
+스프링 컨테이너는 @Configuration 이 붙은 DependencyConfig 를 설정 정보로 사용합니다.
+
+@Bean 이 적힌 메서드를 모두 호출해서 반환된 객체를 스프링 컨테이너에 등록합니다.
+직접 자바 코드로 설정 및 등록했던 것을 스프링 컨테이너에 객체만 스프링 빈으로 등록해주고 스프링 컨테이너에서 찾아서 사용하도록 변경된 것입니다.
+*/

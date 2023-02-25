@@ -1,9 +1,15 @@
 package com.codestates.section2week4.coffee;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class CoffeeService {
 
     private final CoffeeRepository coffeeRepository;
 
+    // @Autowired - 생성자 의존성 주입에 필요한 설정 정보 대신 의존관계 자동 주입을 해주게 됩니다.
+    @Autowired
     public CoffeeService(CoffeeRepository coffeeRepository) {
         this.coffeeRepository = coffeeRepository;
     }

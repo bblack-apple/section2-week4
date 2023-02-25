@@ -1,11 +1,13 @@
 package com.codestates.section2week4.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemberRepository {
-
-    public static Map<Long, Member> members = new HashMap<>();
+    private static Map<Long, Member> members = new HashMap<>();
 
     public void postMember(Member member) {
         members.put(member.getMemberId(), member);

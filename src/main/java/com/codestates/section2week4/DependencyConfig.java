@@ -5,6 +5,7 @@ import com.codestates.section2week4.coffee.CoffeeService;
 import com.codestates.section2week4.member.MemberRepository;
 import com.codestates.section2week4.member.MemberService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -28,5 +29,7 @@ public class DependencyConfig {
 }
 
 /*
-* 이 파일을 통해 의존관계를 관리한다.
-* */
+이 파일을 통해 의존관계를 관리합니다.
+- @Configuration 과 @Bean 애너테이션을 추가해줍니다.
+- @Bean을 통해 스프링 컨테이너에 등록됩니다.
+*/
